@@ -1792,7 +1792,6 @@ SYSTEM_FUNCS="
     mprotect
     nanosleep
     PeekNamedPipe
-    posix_memalign
     pthread_cancel
     sched_getaffinity
     SetConsoleTextAttribute
@@ -5063,7 +5062,6 @@ check_builtin localtime_r time.h "time_t *time; struct tm *tm; localtime_r(time,
 
 check_func_headers malloc.h _aligned_malloc     && enable aligned_malloc
 check_func  ${malloc_prefix}memalign            && enable memalign
-check_func  ${malloc_prefix}posix_memalign      && enable posix_memalign
 
 check_func  access
 check_func_headers time.h clock_gettime || { check_func_headers time.h clock_gettime -lrt && add_extralibs -lrt && LIBRT="-lrt"; }
@@ -5782,14 +5780,13 @@ enabled threads && ! enabled pthreads && ! enabled atomics_native && die "non pt
 
 if test $target_os = "haiku"; then
     disable memalign
-    disable posix_memalign
 fi
 
 enabled_all dxva2 dxva2api_cobj CoTaskMemFree &&
     prepend ffmpeg_libs $($ldflags_filter "-lole32" "-luser32") &&
     enable dxva2_lib
 
-! enabled_any memalign posix_memalign aligned_malloc &&
+! enabled_any memalign  aligned_malloc &&
     enabled simd_align_16 && enable memalign_hack
 
 # add_dep lib dep

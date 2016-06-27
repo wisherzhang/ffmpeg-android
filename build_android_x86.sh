@@ -28,7 +28,7 @@ function build_x86
   --arch=x86 \
   ${GENERAL} \
   --sysroot=$PLATFORM \
-  --enable-version3 --enable-gpl --enable-nonfree --disable-shared --disable-stripping \
+  --enable-version3 --enable-gpl --enable-nonfree --disable-shared --enable-static --disable-stripping  --enable-pic \
   --disable-ffmpeg --disable-ffplay --disable-ffserver --disable-ffprobe --disable-protocols --enable-protocol=file --enable-protocol=udp \
   --enable-protocol=tcp --enable-protocol=http --enable-network --disable-muxers --enable-muxer=mov  --enable-muxer=mjpeg --disable-avdevice --disable-indevs --disable-bsfs \
   --disable-encoders --enable-encoder=mjpeg --enable-encoder=h263 --enable-encoder=libmp3lame --disable-decoders --enable-decoder=h264 --disable-parsers --disable-devices --disable-parsers \

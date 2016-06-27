@@ -1,3 +1,8 @@
+2016-6-2 add by zhangguowei
+1、x86平台编译错误
+libavutil.a(cpu.o):cpu.c:function av_cpu_count: error: undefined reference to 'sched_getaffinity'
+解决方法： 
+需要修改config.h config.mak文件中HAVE_SCHED_GETAFFINITY定义为0
 FFmpeg README
 =============
 
